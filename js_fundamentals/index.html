@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+
+  <script>
+
+    var person = {
+      name: 'Trey',
+      distance_traveled: 0,
+      say_name: function() {
+        alert(person.name);
+      },
+      say_something: function(str){
+        alert(person.name + 'says' + str);
+      },
+      walk: function() {
+        alert(person.name + "is walking");
+        person.distance_traveled += 3;
+      },
+      run: function() {
+        alert(person.name +''+ 'is running');
+        person.distance_traveled += 10;
+      },
+      crawl: function(){
+        alert(person.name + 'is running');
+        person.distance_traveled += 1;
+      }
+    };
+
+    person.crawl();
+
+  </script>
+
+
+</body>
+</html>

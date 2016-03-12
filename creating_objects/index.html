@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  <script>
+
+function Vehicle(name, wheels, passengers, speed) {
+//   var vehicle = {};     // here we create the object that will eventually be our vehicle
+  this.name = name;
+  this.wheels = wheels;
+  this.passengers = passengers;
+  this.speed = speed;
+  this.make_noise = function() {
+    alert('oink oink');
+  };
+  var privateDistanceTraveled = 0;
+  var self = this;
+  var privateUpdateDistanceTraveled = function(){
+    privateDistanceTraveled += speed;
+  };
+
+//   return vehicle;       // return the object
+  Vehicle.prototype.move = function(){
+    privateUpdateDistanceTraveled();
+    this.make_noise();
+    return this;
+  };
+  Vehicle.prototype.check_miles = function(){
+    console.log(this.privateDistanceTraveled);
+  };
+}
+
+
+// var Bike = new Vehicle('Honda',2,1);
+// Bike.make_noise = function(){
+//   alert('ring ring');
+// };
+// Bike.make_noise();
+
+
+
+// var Sedan = new Vehicle('Tesla', 4, 4);
+// Sedan.make_noise = function(){
+//   alert('Honk Honk');
+// };
+// Sedan.make_noise();
+
+// var bus = new Vehicle("Yellow", 4, 20);
+// bus.pickUpPassengers = function(){
+//   passengers+=passengers;
+// };
+// console.log(bus.passengers);
+
+
+vehicle1 = new Vehicle(1,2,34,5);
+
+vehicle1.move().check_miles();
+
+
+
+
+
+
+  </script>
+</body>
+</html>
+
+
+

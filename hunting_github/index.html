@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hunting Github</title>
+  <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      $('button').click(function(){
+        $.get("https://api.github.com/users/tigerbombz", displayName)
+      });
+
+      function displayName(data) {
+        $('.name').html('<p>' + 'My name is ' + data.name);
+
+      }
+    });
+
+
+  </script>
+</head>
+<body>
+  <button>Get My Name</button>
+  <div class="name"></div>
+</body>
+</html>

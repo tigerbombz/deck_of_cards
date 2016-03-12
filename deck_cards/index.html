@@ -1,0 +1,133 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Deck of Cards</title>
+</head>
+<body>
+  <script>
+
+    function card(value, name, suit){
+      this.value = value;
+      this.name = name;
+      this.suit = suit;
+    }
+
+    function deck(){
+      this.names = [1,2,3,4,5,6,7,8,9,10,'j','q','k'];
+      this.suits = ['s','c','h','d'];
+      var cards = [];
+
+      for(var s = 0; s < this.suits.length; s++){
+        for(var n = 0; n < this.names.length; n++){
+          cards.push( new card( n+1, this.names[n], this.suits[s] ) );
+        }
+      }
+      return cards;
+
+    }
+    var myDeck = new deck();
+    console.log(myDeck);
+
+    window.onload = function() {
+
+    for(var i=0; i < myDeck.length; i++){
+      div = document.createElement('div');
+      div.className = 'card';
+
+      if(myDeck[i].suit == 'd'){
+        var ascii_char = '♦';
+      }
+      else if(myDeck[i].suit == 'h'){
+        var ascii_char = '♥';
+      }
+      else if(myDeck[i].suit == 'c'){
+        var ascii_char = '♣';
+      }
+      else if(myDeck[i].suit == 's'){
+        var ascii_char = '♠';
+      }
+
+      div.innerHTML = '' + myDeck[i].name + '' + ascii_char + '';
+      document.body.appendChild(div);
+    }
+ }
+
+  Deck.prototype.shuffle = function() {
+
+  }
+
+
+  </script>
+
+  <a href="#" class="shuffle">Shuffle</a>
+  <a href="" class="reset">Reset</a>
+  <a href="" class="deal_random">Deal a Random Card</a>
+  <a href="" class="deal_remove">Deal and Remove From Deck</a>
+</body>
+</html>
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Deck of Cards Brendan DEMO</title>
+  <script>
+
+    var Deck = function Deck(){
+    this.deck = [];
+    this.reset();
+    }
+
+    Deck.prototype.reset = function(){
+      var suits = ['Spades', 'Hearts', 'Clubs', 'Diamonds'];
+      var pips = ['Ace', 2,3,4,5,6,7,8,9,10, 'Jack', 'Queen', 'King'];
+      this.deck = [];
+
+      for(var suit in suits){
+        for(var pip in pips){
+          this.deck.push(pips[pip] + ' of' + suits[suit])
+        }
+      }
+      return this;
+    }
+    Deck.prototype.shuffle = function(){ //finish shuffle
+      var m = this.deck.length, t, i;
+      while (m){
+        i = Math.floor(Math.random)() * m--);
+        t = this.deck[m];
+      }
+    }
+
+    Deck.prototype.deal = function(){
+      return this.deck.pop();
+    }
+
+    var Player = function Player(name){
+      this.name = name;
+      this.hand = [];
+    }
+
+    Player.prototype.draw = function(deck){
+      this.hand.push(deck.deal());
+      return this;
+    }
+
+    Player.prototype.discard = function(){
+      this.hand.pop();
+      return this;
+    }
+
+    var deck1 = new Deck();
+    deck1.shuffle();
+    console.log(deck1.reset());
+
+    var player1 = new Player('Brendan');
+    console.log(player1.draw(deck1).draw(deck1).hand);
+  </script>
+</head>
+<body>
+
+</body>
+</html>
